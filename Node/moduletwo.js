@@ -11,14 +11,14 @@ console.log( chalk.red("const" , count))
 
 // const prevent reassingment of variable not of the content if it is object  or array
 
-// for ARRAYS 
+// for OBJECTS
 const person = { name : "Aditya" , age : "18"};
 person.age = "21"
 console.log(person)
 // person = "harry"  //TypeError: Assignment to constant variable.
 
 
-//  for OBJECTS 
+//  for ARRAYS
  const number = [2 , 3 , 5 , 6 ]
  number.push(19) ;
  console.log(number)
@@ -47,3 +47,45 @@ console.log(user.age)
 const { name : username , age  : ageuser,email } = user;
 console.log(email) 
 console.log(chalk.bgWhiteBright.black(username))
+
+// Promise and async/await 
+function delay(ms, message) {
+return new Promise((resolve, reject) => {
+if (ms < 0) {
+reject(new Error("Delay time cannot be negative."));
+console.log("if statement")
+} else {
+setTimeout(() => {
+resolve(message || `Operation completed after ${ms}ms`);
+}, ms);
+console.log("resolve ")
+  }
+ });
+}
+
+console.log(delay)
+
+// Async - await 
+async function performDelayedOperations() {
+try {
+console.log("Starting operations...");
+
+// Await the first promise
+const result1 = await delay(2000, "First step done.");
+console.log(result1);
+
+// Await the second promise
+const result2 = await delay(1500, "Second step done.");
+console.log(result2);
+
+// Example of awaiting a rejected promise
+// const failedResult = await delay(-1000, "This will fail");
+// console.log(failedResult); // This line will not be reached if delay rejects
+
+console.log("All operations completed successfully!");
+return "Success"; // This value will be wrapped in a resolved Promise
+} catch (error) {
+console.error("An error occurred during operations:", error.message);
+throw error; // Re-throw the error to be caught by the caller
+  }
+}

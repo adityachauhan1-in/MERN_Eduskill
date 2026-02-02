@@ -6,7 +6,7 @@ const port = 3000;
 const server = http.createServer((req,res) => {
     res.statusCode = 200;// OK 
    
-    res.end("Hello from Node.js  Server HIII ")
+    res.end("Hello from Node.js  Server HIII ")// ON BROWSER    
 })
  server.listen(port, hostname, () => {   console.log(`Server running at http://${hostname}:${port}/`); });
  server.listen(port, hostname, () => {   console.log(`Server running at http://${hostname}:${port}/about`); });
