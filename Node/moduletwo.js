@@ -235,3 +235,15 @@ const sampleUserModer ={
   }
 }
 console.log(processUserDataModern(sampleUserModer))
+
+// SCENARION NUMBER ==========> Second 
+
+const scenarioProduct = [
+  {id: 1 , name : "mobile",price : 30 },
+  {id: 2 , name : "charger",price : 40 },
+  {id: 3 , name : "datacable",price : 50 },
+  {id: 4 , name : "printer",price : 60 }
+]
+
+const fetchProuctList = scenarioProduct.map(pro => pro.id)
+console.log(fetchProuctList,1000)
