@@ -246,4 +246,23 @@ const scenarioProduct = [
 ]
 
 const fetchProuctList = scenarioProduct.map(pro => pro.id)
-console.log(fetchProuctList,1000)
+console.log(fetchProuctList,)
+
+// ------> Json <---------
+// Json string recieved from an api 
+const jsonString = `{ "name" : "Aditya" ,
+ "age": 22 , 
+  "city":"Meerut" }`
+// parse the json string into javascript object 
+const objectString = JSON.parse(jsonString);
+console.log(chalk.bgBlue(objectString.name))
+console.log(chalk.bgBlue(objectString.city))
+console.log(chalk.bgBlue(objectString.age))
+//  JavaScrpt object to the json format 
+const userDetails = {
+  "name" : "Chauhan",
+  "age" : 21 , 
+  "city" : "Bangalore"
+}
+const jsonUserDetails = JSON.stringify(userDetails)
+console.log(chalk.bgGray(jsonUserDetails))
