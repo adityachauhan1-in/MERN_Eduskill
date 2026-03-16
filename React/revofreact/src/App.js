@@ -1,20 +1,29 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './App.css';
 
-import UserData from './modulethree/components/useeffect/UserDataApi';
-import UseCounter from './modulethree/components/customHook/UseCounter';
+
+import ThemeProvider from './modulethree/components/context/ThemeProvider';
+import ThemeContext from './modulethree/components/context/ThemeContext';
+import ThemeButton from './modulethree/components/context/ThemeButton';
+import ThemedComponent from './modulethree/components/context/ThemedComponent';
+import AuthProvider from './modulethree/components/context/AuthProvider';
+import AuthStatusDisplay from './modulethree/components/context/AuthStatusDisplay';
+import LoginLogoutButton from './modulethree/components/context/LoginLogoutButton';
 // Parent component 
 function App() {
-  const[currUserId , setCurrUserId] = useState(1)
+  const {theme , setTheme}  = useContext(ThemeContext) 
   return (
-    <> 
+    <>
+    <AuthProvider>
+  <ThemeProvider>  
 
-<h1>Practical Example of fetching data</h1>
+    <ThemeButton/>
+<ThemedComponent/>
+<AuthStatusDisplay/>
+<LoginLogoutButton/>
+ </ThemeProvider>
+  </AuthProvider>
 
- <h1> Current User Id is : {currUserId}</h1>
- <UserData userId={currUserId}/>
- <button onClick={()=> setCurrUserId(currUserId + 1)}>Next User ( Id : {currUserId + 1})</button>
- <UseCounter/>
 </>
  )
 }
