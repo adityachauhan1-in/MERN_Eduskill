@@ -1,29 +1,27 @@
-import { useContext, useState } from 'react';
+import React from 'react';
 import './App.css';
+import {useDispatch , useSelector} from 'react-redux'
 
 
-import ThemeProvider from './modulethree/components/context/ThemeProvider';
-import ThemeContext from './modulethree/components/context/ThemeContext';
-import ThemeButton from './modulethree/components/context/ThemeButton';
-import ThemedComponent from './modulethree/components/context/ThemedComponent';
-import AuthProvider from './modulethree/components/context/AuthProvider';
-import AuthStatusDisplay from './modulethree/components/context/AuthStatusDisplay';
-import LoginLogoutButton from './modulethree/components/context/LoginLogoutButton';
 // Parent component 
 function App() {
-  const {theme , setTheme}  = useContext(ThemeContext) 
+    const count = useSelector((state) => state.count); // Access state
+  const dispatch = useDispatch(); // Get dispatch function
+
+    const incrementAction = () => ({ type: 'Increment' });
+  const decrementAction = () => ({ type: 'Decrement' });
   return (
     <>
-    <AuthProvider>
-  <ThemeProvider>  
-
-    <ThemeButton/>
-<ThemedComponent/>
-<AuthStatusDisplay/>
-<LoginLogoutButton/>
- </ThemeProvider>
-  </AuthProvider>
-
+    <div style={{ padding: '20px', textAlign: 'center' }}>
+      <h1>Basic Redux Counter</h1>
+      <h2>Current Count: {count}</h2>
+      <div style={{ marginTop: '10px' }}>
+        <button onClick={() => dispatch(incrementAction())}>Increment</button>
+        <button onClick={() => dispatch(decrementAction())} style={{ marginLeft: '10px' }}>
+          Decrement
+        </button>
+      </div>
+    </div>
 </>
  )
 }
