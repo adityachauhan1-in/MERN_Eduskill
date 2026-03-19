@@ -1,26 +1,26 @@
 import React from 'react';
 import './App.css';
-import {useDispatch , useSelector} from 'react-redux'
-
-
+import {Routes , Route } from 'react-router-dom'
+import DashBoardLayout from './module_6/NestedRoutes/DashBoard';
+import DashOverview from './module_6/NestedRoutes/DashOverview';
+import DashSetting from './module_6/NestedRoutes/DashSetting';
+import DashProfile from './module_6/NestedRoutes/DashProfile'
 // Parent component 
 function App() {
-    const count = useSelector((state) => state.count); // Access state
-  const dispatch = useDispatch(); // Get dispatch function
-
-    const incrementAction = () => ({ type: 'Increment' });
-  const decrementAction = () => ({ type: 'Decrement' });
+  
   return (
     <>
     <div style={{ padding: '20px', textAlign: 'center' }}>
-      <h1>Basic Redux Counter</h1>
-      <h2>Current Count: {count}</h2>
-      <div style={{ marginTop: '10px' }}>
-        <button onClick={() => dispatch(incrementAction())}>Increment</button>
-        <button onClick={() => dispatch(decrementAction())} style={{ marginLeft: '10px' }}>
-          Decrement
-        </button>
-      </div>
+   <Routes>
+    <Route path='/' element={<DashBoardLayout/>}/>
+    {/* child components below it  */}
+    <Route path='overview' element={<DashOverview/>}/>
+    <Route path='profile' element={<DashProfile/>}/>
+    <Route path='setting' element={<DashSetting/>}/>
+
+    {/* default child component */}
+    <Route index element = {<DashProfile/>}/>
+      </Routes>
     </div>
 </>
  )
